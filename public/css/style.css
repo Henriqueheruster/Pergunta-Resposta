@@ -1,0 +1,20 @@
+body{
+    background-color: gray;
+}
+
+#logo-unifae{
+    width: 100px;
+    margin-left: 1vh;
+}
+
+#form-question{
+    margin-top: 5vh;
+}
+
+.navbar{
+    background-color: #3abdb2;
+}
+
+.botaoPerguntas{
+    font-weight: bold;
+}

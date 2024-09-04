@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<%- include ('partials/header.ejs') %>
+<body>
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <h1><%= pergunta.titulo %></h1>
+        <hr>
+        <p><%= pergunta.descricao %></p>
+        <hr>
+        <form method="post" action="/responder">
+            <label for="">Respostas</label>
+            <textarea placeholder="Digite sua Resposta" name="corpo" class="form-control"></textarea><br>
+            <button type="submit" class="btn btn-success"><b>Responder</b></button>
+            <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+            <a class="btn btn-success" href="/">&larr; Voltar</a>
+        </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% resposta.forEach(resposta => { %>
+            <h4>Data da resposta: <%= new Date(resposta.createdAt).toDateString()%></h4>
+            <div class="card">
+                <br>                
+                <div class="card-body">                    
+                    <%= resposta.corpo %>                    
+                </div>
+                <div class="card-footer">
+                    <a href="/resposta/delete/<%= resposta.id %>">
+                        <button class="btn btn-danger">Excluir</button>
+                    </a>
+                </div>
+            </div>
+            <br>
+        <% }) %>
+    </div>    
+</body>
+<%- include ('partials/footer.ejs') %>
+</html>
